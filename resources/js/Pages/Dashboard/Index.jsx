@@ -210,17 +210,17 @@ export default function Dashboard() {
         <AppLayout
             header={
                 <div className="flex items-center justify-between w-full">
-                    <h2 className="text-xl font-bold leading-tight text-indigo-800 dark:text-seamist-300">Beranda Keuangan</h2>
-                    <div className="flex bg-gray-100 dark:bg-slate-700 p-1 rounded-xl">
+                    <h2 className="text-lg md:text-xl font-bold leading-tight text-indigo-800 dark:text-[#e7e9ea]">Beranda Keuangan</h2>
+                    <div className="flex bg-gray-100 dark:bg-[#15202b] p-1 rounded-xl">
                         <button 
                             onClick={() => setWalletFilter('personal')}
-                            className={`px-4 py-1.5 text-xs font-bold rounded-lg transition-all ${walletFilter === 'personal' ? 'bg-white dark:bg-slate-600 text-indigo-700 dark:text-white shadow-sm' : 'text-gray-500 hover:text-gray-700 dark:hover:text-gray-300'}`}
+                            className={`px-2.5 md:px-4 py-1.5 text-[10px] md:text-xs font-bold rounded-lg transition-all ${walletFilter === 'personal' ? 'bg-white dark:bg-[#16181c] text-indigo-700 dark:text-[#e7e9ea] shadow-sm' : 'text-gray-500 hover:text-gray-700 dark:hover:text-[#e7e9ea]'}`}
                         >
                             Pribadi
                         </button>
                         <button 
                             onClick={() => setWalletFilter('business')}
-                            className={`px-4 py-1.5 text-xs font-bold rounded-lg transition-all ${walletFilter === 'business' ? 'bg-white dark:bg-slate-600 text-indigo-700 dark:text-white shadow-sm' : 'text-gray-500 hover:text-gray-700 dark:hover:text-gray-300'}`}
+                            className={`px-2.5 md:px-4 py-1.5 text-[10px] md:text-xs font-bold rounded-lg transition-all ${walletFilter === 'business' ? 'bg-white dark:bg-[#16181c] text-indigo-700 dark:text-[#e7e9ea] shadow-sm' : 'text-gray-500 hover:text-gray-700 dark:hover:text-[#e7e9ea]'}`}
                         >
                             Kuliah
                         </button>
@@ -230,34 +230,34 @@ export default function Dashboard() {
         >
             <Head title="Beranda" />
 
-            <div className="p-4 md:p-6 lg:p-8 space-y-8 max-w-7xl mx-auto">
+            <div className="w-full px-3 md:px-6 lg:px-8 py-5 md:py-8 space-y-6 md:space-y-8 max-w-7xl mx-auto">
                 
                 {/* Greeting Section */}
-                <div className="flex items-center justify-between bg-white dark:bg-slate-800 p-6 rounded-3xl shadow-sm border border-seamist-200 dark:border-slate-700 animate-in fade-in slide-in-from-bottom-2 duration-500">
+                <div className="flex items-center justify-between bg-white dark:bg-[#16181c] p-4 md:p-6 rounded-3xl shadow-sm border border-seamist-200 dark:border-[#2f3336] animate-in fade-in slide-in-from-bottom-2 duration-500 w-full overflow-hidden">
                     <div className="flex-1">
                         {isInitialLoad ? (
                             <div className="space-y-2">
-                                <div className="h-8 w-48 bg-gray-100 dark:bg-slate-700 rounded-lg animate-pulse"></div>
-                                <div className="h-6 w-64 bg-gray-50 dark:bg-slate-700/50 rounded-lg animate-pulse"></div>
+                                <div className="h-8 w-48 bg-gray-100 dark:bg-[#15202b] rounded-lg animate-pulse"></div>
+                                <div className="h-6 w-64 bg-gray-50 dark:bg-[#15202b]/50 rounded-lg animate-pulse"></div>
                             </div>
                         ) : (
                             <>
-                                <h1 className="text-2xl font-bold text-gray-800 dark:text-gray-100 mb-1 tracking-tight">
+                                <h1 className="text-lg md:text-2xl font-bold text-gray-800 dark:text-[#e7e9ea] mb-1 tracking-tight">
                                     Halo, {user?.name.split(' ')[0] || 'Teman'}!
                                 </h1>
-                                <p className="text-indigo-600 dark:text-seamist-300 font-medium bg-indigo-50 dark:bg-slate-700 px-4 py-1.5 rounded-full inline-block text-sm mt-1">
+                                <p className="text-indigo-600 dark:text-[#e7e9ea] font-medium bg-indigo-50 dark:bg-[#15202b] px-3 py-1 rounded-full inline-block text-[10px] md:text-sm mt-1">
                                     {insight}
                                 </p>
                             </>
                         )}
                     </div>
-                    <div className="hidden sm:flex p-4 bg-indigo-50 dark:bg-slate-700 text-indigo-600 dark:text-seamist-300 rounded-2xl">
+                    <div className="hidden sm:flex p-4 bg-indigo-50 dark:bg-[#15202b] text-indigo-600 dark:text-[#e7e9ea] rounded-2xl border dark:border-[#2f3336]">
                         <Sparkles className="w-8 h-8 animate-pulse" />
                     </div>
                 </div>
 
                 {/* Saldo / Ringkasan Card */}
-                <div className="bg-gradient-to-br from-indigo-700 to-indigo-900 rounded-[2.5rem] p-8 text-white shadow-xl relative overflow-hidden group transition-all duration-300 hover:shadow-2xl">
+                <div className="bg-gradient-to-br from-indigo-700 to-indigo-900 rounded-[2rem] md:rounded-[2.5rem] p-4 md:p-8 text-white shadow-xl relative overflow-hidden group transition-all duration-300 hover:shadow-2xl">
                     <div className="absolute top-0 right-0 w-64 h-64 bg-white/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/3 group-hover:scale-110 transition-transform duration-700"></div>
                     
                     <div className="relative z-10">
@@ -274,30 +274,30 @@ export default function Dashboard() {
                                         {isBalanceHidden ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
                                     </button>
                                 </div>
-                                <div className="text-4xl md:text-6xl font-semibold tracking-tighter text-white">
+                                <div className="text-2xl md:text-5xl font-semibold tracking-tighter text-white">
                                     {isInitialLoad ? (
-                                        <div className="h-12 w-64 bg-white/10 rounded-2xl animate-pulse"></div>
+                                        <div className="h-10 w-48 bg-white/10 rounded-xl animate-pulse"></div>
                                     ) : (
                                         <>Rp {isBalanceHidden ? '***.***' : safeToSpend.toLocaleString('id-ID')}</>
                                     )}
                                 </div>
                             </div>
-                            <div className="bg-white/10 px-4 py-2 rounded-xl backdrop-blur-sm border border-white/10 self-start md:self-auto">
-                                <span className="text-[10px] font-medium text-indigo-200 uppercase tracking-widest block mb-0.5">Total Saldo Tersedia</span>
-                                <span className="text-lg font-bold text-white">
+                            <div className="bg-white/10 px-3 py-1.5 md:px-4 md:py-2 rounded-xl backdrop-blur-sm border border-white/10 self-start md:self-auto">
+                                <span className="text-[8px] md:text-[10px] font-medium text-indigo-200 uppercase tracking-widest block mb-0.5">Total Saldo Tersedia</span>
+                                <span className="text-sm md:text-lg font-bold text-white">
                                     Rp {isBalanceHidden ? '***.***' : balance.toLocaleString('id-ID')}
                                 </span>
                             </div>
                         </div>
                         
                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                            <div className="bg-white/10 p-5 rounded-3xl backdrop-blur-md border border-white/10 relative overflow-hidden flex items-center justify-between">
-                                <div>
-                                    <p className="text-[10px] font-medium text-indigo-200 uppercase tracking-widest mb-1">Pengeluaran Hari Ini</p>
-                                    <p className="text-2xl font-semibold">Rp {isBalanceHidden ? '***.***' : todayExpense.toLocaleString('id-ID')}</p>
+                            <div className="bg-white/10 p-3.5 md:p-5 rounded-2xl md:rounded-3xl backdrop-blur-md border border-white/10 relative overflow-hidden flex items-center justify-between gap-3">
+                                <div className="min-w-0">
+                                    <p className="text-[8px] md:text-[10px] font-medium text-indigo-200 uppercase tracking-widest mb-1">Pengeluaran Hari Ini</p>
+                                    <p className="text-base md:text-2xl font-semibold truncate">Rp {isBalanceHidden ? '***.***' : todayExpense.toLocaleString('id-ID')}</p>
                                 </div>
                                 {isLimitEnabled && (
-                                    <div className="relative w-14 h-14 flex items-center justify-center shrink-0">
+                                    <div className="relative w-10 h-10 md:w-14 md:h-14 flex items-center justify-center shrink-0">
                                         {/* Background Circle */}
                                         <svg className="w-full h-full transform -rotate-90" viewBox="0 0 36 36">
                                             <path
@@ -319,27 +319,27 @@ export default function Dashboard() {
                                             />
                                         </svg>
                                         <div className="absolute flex flex-col items-center justify-center">
-                                            <span className="text-[10px] font-bold">{limitPercentage}%</span>
+                                            <span className="text-[8px] md:text-[10px] font-bold">{limitPercentage}%</span>
                                         </div>
                                     </div>
                                 )}
                             </div>
-                            <div className="bg-white/10 p-5 rounded-3xl backdrop-blur-md border border-white/10 flex items-center justify-between">
-                                <div>
-                                    <p className="text-[10px] font-medium text-green-200 uppercase tracking-widest mb-1">Pemasukan Bln Ini</p>
-                                    <p className="text-2xl font-semibold text-green-300">Rp {transactions.filter(t => t.type === 'income').reduce((a, b) => a + b.amount, 0).toLocaleString('id-ID')}</p>
+                            <div className="bg-white/10 p-3.5 md:p-5 rounded-2xl md:rounded-3xl backdrop-blur-md border border-white/10 flex items-center justify-between gap-3">
+                                <div className="min-w-0">
+                                    <p className="text-[8px] md:text-[10px] font-medium text-green-200 uppercase tracking-widest mb-1">Pemasukan Bln Ini</p>
+                                    <p className="text-base md:text-2xl font-semibold text-green-300 truncate">Rp {transactions.filter(t => t.type === 'income').reduce((a, b) => a + b.amount, 0).toLocaleString('id-ID')}</p>
                                 </div>
-                                <div className="w-14 h-14 flex items-center justify-center shrink-0 bg-green-400/20 rounded-full text-green-300">
-                                    <TrendingUp className="w-6 h-6" />
+                                <div className="w-9 h-9 md:w-14 md:h-14 flex items-center justify-center shrink-0 bg-green-400/20 rounded-full text-green-300">
+                                    <TrendingUp className="w-4 h-4 md:w-6 md:h-6" />
                                 </div>
                             </div>
-                            <div className="bg-white/10 p-5 rounded-3xl backdrop-blur-md border border-white/10 flex items-center justify-between">
-                                <div>
-                                    <p className="text-[10px] font-medium text-blue-200 uppercase tracking-widest mb-1">Rasio Tabungan</p>
-                                    <p className="text-2xl font-semibold text-blue-300">{savingsRate}% <span className="text-xs font-normal text-blue-200/60 ml-1">dari income</span></p>
+                            <div className="bg-white/10 p-3.5 md:p-5 rounded-2xl md:rounded-3xl backdrop-blur-md border border-white/10 flex items-center justify-between gap-3">
+                                <div className="min-w-0">
+                                    <p className="text-[8px] md:text-[10px] font-medium text-blue-200 uppercase tracking-widest mb-1">Rasio Tabungan</p>
+                                    <p className="text-base md:text-2xl font-semibold text-blue-300 truncate">{savingsRate}% <span className="text-[8px] md:text-[10px] font-normal text-blue-200/60 ml-1">income</span></p>
                                 </div>
-                                <div className="w-14 h-14 flex items-center justify-center shrink-0 bg-blue-400/20 rounded-full text-blue-300">
-                                    <PieChart className="w-6 h-6" />
+                                <div className="w-9 h-9 md:w-14 md:h-14 flex items-center justify-center shrink-0 bg-blue-400/20 rounded-full text-blue-300">
+                                    <PieChart className="w-4 h-4 md:w-6 md:h-6" />
                                 </div>
                             </div>
                         </div>
@@ -357,25 +357,25 @@ export default function Dashboard() {
                         </div>
                         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                             {debts.length === 0 ? (
-                                <div className="col-span-full bg-white dark:bg-slate-800 p-8 rounded-[2rem] border-2 border-dashed border-gray-100 dark:border-slate-700 text-center">
-                                    <p className="text-gray-400 font-medium">Bagus! Kamu tidak punya catatan hutang aktif.</p>
+                                <div className="col-span-full bg-white dark:bg-[#16181c] p-8 rounded-[2rem] border-2 border-dashed border-gray-100 dark:border-[#2f3336] text-center">
+                                    <p className="text-gray-400 dark:text-[#71767b] font-medium">Bagus! Kamu tidak punya catatan hutang aktif.</p>
                                 </div>
                             ) : (
                                 debts.map(debt => (
-                                    <div key={debt.id} className="bg-white dark:bg-slate-800 p-5 rounded-[2rem] border border-seamist-200 dark:border-slate-700 shadow-sm hover:shadow-md transition-all group">
+                                    <div key={debt.id} className="bg-white dark:bg-[#16181c] p-5 rounded-[2rem] border border-seamist-200 dark:border-[#2f3336] shadow-sm hover:shadow-md transition-all group">
                                         <div className="flex items-center justify-between mb-4">
-                                            <div className={`px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-widest ${debt.type === 'debt' ? 'bg-red-50 text-red-600 dark:bg-red-950/30 dark:text-red-400' : 'bg-green-50 text-green-600 dark:bg-green-950/30 dark:text-green-400'}`}>
+                                            <div className={`px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-widest ${debt.type === 'debt' ? 'bg-red-50 text-red-600 dark:bg-red-500/10 dark:text-red-500' : 'bg-green-50 text-green-600 dark:bg-green-500/10 dark:text-green-500'}`}>
                                                 {debt.type === 'debt' ? 'Hutang Saya' : 'Piutang'}
                                             </div>
-                                            <div className="flex items-center gap-1 text-[10px] text-gray-400 font-medium uppercase">
+                                            <div className="flex items-center gap-1 text-[10px] text-gray-400 dark:text-[#71767b] font-medium uppercase">
                                                 <Calendar className="w-3 h-3" />
                                                 {debt.due_date ? new Date(debt.due_date).toLocaleDateString('id-ID', { day: 'numeric', month: 'short' }) : 'Kapan Saja'}
                                             </div>
                                         </div>
                                         <div className="mb-4">
-                                            <p className="text-lg font-bold text-gray-800 dark:text-gray-100">{debt.contact_name}</p>
-                                            <p className="text-xl font-extrabold text-indigo-700 dark:text-indigo-400 tracking-tight">Rp {debt.amount.toLocaleString('id-ID')}</p>
-                                            {debt.notes && <p className="text-xs text-gray-400 italic mt-1">"{debt.notes}"</p>}
+                                            <p className="text-lg font-bold text-gray-800 dark:text-[#e7e9ea]">{debt.contact_name}</p>
+                                            <p className="text-xl font-extrabold text-indigo-700 dark:text-[#1d9bf0] tracking-tight">Rp {debt.amount.toLocaleString('id-ID')}</p>
+                                            {debt.notes && <p className="text-xs text-gray-400 dark:text-[#71767b] italic mt-1">"{debt.notes}"</p>}
                                         </div>
                                         <div className="flex items-center gap-2 pt-2 opacity-0 group-hover:opacity-100 transition-opacity">
                                             <button 
@@ -400,15 +400,15 @@ export default function Dashboard() {
 
                 <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
                     {/* Grafik Bar */}
-                    <div className="bg-white dark:bg-slate-800 p-6 md:p-8 rounded-[2.5rem] shadow-sm border border-seamist-200 dark:border-slate-700 lg:col-span-2 transition-all duration-300 hover:shadow-md">
-                        <h3 className="font-bold text-gray-800 dark:text-gray-100 text-lg mb-6">Arus Kas Bulanan</h3>
+                    <div className="bg-white dark:bg-[#16181c] p-6 md:p-8 rounded-[2.5rem] shadow-sm border border-seamist-200 dark:border-[#2f3336] lg:col-span-2 transition-all duration-300 hover:shadow-md">
+                        <h3 className="font-bold text-gray-800 dark:text-[#e7e9ea] text-lg mb-6">Arus Kas Bulanan</h3>
                         <div className="relative h-64 md:h-80">
                             <Bar options={barOptions} data={barData} />
                         </div>
                     </div>
 
                     {/* Grafik Doughnut */}
-                    <div className="bg-white dark:bg-slate-800 p-6 md:p-8 rounded-[2.5rem] shadow-sm border border-seamist-200 dark:border-slate-700 transition-all duration-300 hover:shadow-md relative group">
+                    <div className="bg-white dark:bg-[#16181c] p-6 md:p-8 rounded-[2.5rem] shadow-sm border border-seamist-200 dark:border-[#2f3336] transition-all duration-300 hover:shadow-md relative group">
                         <div className="flex items-center justify-between mb-6">
                             <h3 className="font-bold text-gray-800 dark:text-gray-100 text-lg">Alokasi Jajan</h3>
                             {filterCategory && (
@@ -423,10 +423,10 @@ export default function Dashboard() {
                         <div className="relative h-64 md:h-80 flex justify-center">
                             <Doughnut data={doughnutData} options={doughnutOptions} />
                             <div className="absolute inset-0 flex flex-col items-center justify-center pointer-events-none pb-12">
-                                <span className="text-2xl font-bold text-gray-800 dark:text-gray-100 tracking-tighter">
+                                <span className="text-2xl font-bold text-gray-800 dark:text-[#e7e9ea] tracking-tighter">
                                     {filterCategory ? (categoryExpenses[filterCategory] || 0).toLocaleString('id-ID') : '100%'}
                                 </span>
-                                <span className="text-[10px] uppercase font-bold text-gray-400 dark:text-gray-500 tracking-widest">
+                                <span className="text-[10px] uppercase font-bold text-gray-400 dark:text-[#71767b] tracking-widest">
                                     {filterCategory ? filterCategory : 'Alokasi'}
                                 </span>
                             </div>
@@ -435,9 +435,9 @@ export default function Dashboard() {
                 </div>
 
                 {/* Transaksi Terakhir */}
-                <div className="bg-white dark:bg-slate-800 p-6 md:p-8 rounded-[2.5rem] shadow-sm border border-seamist-200 dark:border-slate-700 transition-all duration-300 hover:shadow-md mt-8">
+                <div className="bg-white dark:bg-[#16181c] p-6 md:p-8 rounded-[2.5rem] shadow-sm border border-seamist-200 dark:border-[#2f3336] transition-all duration-300 hover:shadow-md mt-8">
                     <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-8 gap-4">
-                        <h3 className="font-bold text-gray-800 dark:text-gray-100 text-2xl">Riwayat Transaksi</h3>
+                        <h3 className="font-bold text-gray-800 dark:text-[#e7e9ea] text-2xl">Riwayat Transaksi</h3>
                         <div className="flex items-center gap-3 w-full md:w-auto">
                             <a 
                                 href={route('transactions.export')}
@@ -478,31 +478,31 @@ export default function Dashboard() {
                                     </h4>
                                     <div className="space-y-4">
                                         {items.map((trx) => (
-                                            <div key={trx.id} className="group flex items-center justify-between p-5 rounded-[1.5rem] bg-white dark:bg-slate-800 hover:bg-seamist-50 dark:hover:bg-slate-700 transition-all border border-gray-100 dark:border-slate-700 hover:border-seamist-300 dark:hover:border-slate-600">
-                                                <div className="flex items-center gap-5">
-                                                    <div className={`p-4 rounded-2xl ${trx.type === 'expense' ? 'bg-red-50 dark:bg-red-950/30 text-red-600 dark:text-red-400' : trx.type === 'income' ? 'bg-green-50 dark:bg-green-950/30 text-green-600 dark:text-green-400' : 'bg-blue-50 dark:bg-blue-950/30 text-blue-600 dark:text-blue-400'}`}>
-                                                        {trx.type === 'expense' ? <ArrowDownRight className="w-6 h-6" /> : trx.type === 'income' ? <ArrowUpRight className="w-6 h-6" /> : <Wallet className="w-6 h-6" />}
+                                            <div key={trx.id} className="group flex items-center justify-between p-3 md:p-5 rounded-[1.25rem] md:rounded-[1.5rem] bg-white dark:bg-[#15202b] hover:bg-seamist-50 dark:hover:bg-[#1d9bf0]/5 transition-all border border-gray-100 dark:border-[#2f3336] hover:border-seamist-300 dark:hover:border-[#38444d]">
+                                                <div className="flex items-center gap-3 md:gap-5">
+                                                    <div className={`p-2.5 md:p-4 rounded-xl md:rounded-2xl ${trx.type === 'expense' ? 'bg-red-50 dark:bg-red-500/10 text-red-600 dark:text-red-500' : trx.type === 'income' ? 'bg-green-50 dark:bg-green-500/10 text-green-600 dark:text-green-500' : 'bg-blue-50 dark:bg-blue-500/10 text-blue-600 dark:text-blue-500'}`}>
+                                                        {trx.type === 'expense' ? <ArrowDownRight className="w-4 h-4 md:w-6 h-6" /> : trx.type === 'income' ? <ArrowUpRight className="w-4 h-4 md:w-6 h-6" /> : <Wallet className="w-4 h-4 md:w-6 h-6" />}
                                                     </div>
-                                                    <div>
+                                                    <div className="min-w-0">
                                                         <div className="flex items-center gap-2 mb-0.5">
-                                                            <p className="font-semibold text-gray-800 dark:text-gray-100 text-lg leading-none tracking-tight">{trx.title}</p>
-                                                            <span className={`text-[10px] font-bold uppercase px-2 py-0.5 rounded-md ${trx.type === 'expense' ? 'bg-red-100 text-red-700' : trx.type === 'income' ? 'bg-green-100 text-green-700' : 'bg-blue-100 text-blue-700'}`}>
+                                                            <p className="font-semibold text-gray-800 dark:text-[#e7e9ea] text-sm md:text-lg leading-none tracking-tight truncate">{trx.title}</p>
+                                                            <span className={`text-[8px] md:text-[10px] font-bold uppercase px-1.5 py-0.5 rounded-md ${trx.type === 'expense' ? 'bg-red-100 text-red-700' : trx.type === 'income' ? 'bg-green-100 text-green-700' : 'bg-blue-100 text-blue-700'}`}>
                                                                 {trx.type}
                                                             </span>
                                                         </div>
-                                                        <p className="text-xs text-gray-400 font-medium uppercase tracking-widest flex items-center gap-2">
+                                                        <p className="text-[10px] text-gray-400 dark:text-[#71767b] font-medium uppercase tracking-widest flex items-center gap-2">
                                                             <span>{new Date(trx.date).toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}</span>
                                                             {trx.notes && (
                                                                 <>
                                                                     <span className="w-1 h-1 rounded-full bg-gray-300"></span>
-                                                                    <span className="normal-case italic text-indigo-500 font-semibold truncate max-w-[120px]">"{trx.notes}"</span>
+                                                                    <span className="normal-case italic text-indigo-500 font-semibold truncate max-w-[80px] md:max-w-[120px]">"{trx.notes}"</span>
                                                                 </>
                                                             )}
                                                         </p>
                                                     </div>
                                                 </div>
-                                                <div className="flex items-center gap-4">
-                                                    <div className={`font-semibold text-xl tracking-tight ${trx.type === 'expense' || trx.type === 'savings' ? 'text-gray-800' : 'text-green-600'}`}>
+                                                <div className="flex items-center gap-2 md:gap-4 ml-2">
+                                                    <div className={`font-semibold text-sm md:text-xl tracking-tight whitespace-nowrap ${trx.type === 'expense' || trx.type === 'savings' ? 'text-gray-800 dark:text-[#e7e9ea]' : 'text-green-600 dark:text-[#10b881]'}`}>
                                                         {trx.type === 'expense' || trx.type === 'savings' ? '-' : '+'} Rp {trx.amount.toLocaleString('id-ID')}
                                                     </div>
                                                     <button 

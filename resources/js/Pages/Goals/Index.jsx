@@ -147,32 +147,32 @@ export default function GoalsIndex() {
 
     return (
         <AppLayout
-            header={<h2 className="text-xl font-bold leading-tight text-indigo-800 dark:text-seamist-300">Target Tabungan</h2>}
+            header={<h2 className="text-lg md:text-xl font-bold leading-tight text-indigo-800 dark:text-[#e7e9ea]">Target Tabungan</h2>}
         >
             <Head title="Tabungan" />
 
             <div className="p-4 md:p-6 lg:p-8 space-y-8 max-w-7xl mx-auto relative">
-                <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 bg-white dark:bg-slate-800 p-6 rounded-2xl shadow-sm border border-seamist-200 dark:border-slate-700 animate-in fade-in slide-in-from-bottom-2 duration-500">
+                <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 bg-white dark:bg-[#16181c] p-4 md:p-6 rounded-2xl shadow-sm border border-seamist-200 dark:border-[#2f3336] animate-in fade-in slide-in-from-bottom-2 duration-500">
                     <div>
-                        <h3 className="font-extrabold text-gray-800 dark:text-gray-100 text-2xl mb-1">Target Menabung</h3>
-                        <p className="text-gray-500 dark:text-gray-400 font-medium text-sm">Ayo capai mimpimu pelan-pelan!</p>
+                        <h3 className="font-extrabold text-gray-800 dark:text-gray-100 text-lg md:text-2xl mb-1">Target Menabung</h3>
+                        <p className="text-gray-500 dark:text-gray-400 font-medium text-[10px] md:text-sm">Ayo capai mimpimu pelan-pelan!</p>
                     </div>
                     <button 
                         onClick={() => setIsModalOpen(true)}
-                        className="flex items-center gap-2 px-5 py-2.5 bg-indigo-700 text-seamist-50 rounded-xl font-bold hover:bg-indigo-800 hover:shadow-lg hover:-translate-y-0.5 active:translate-y-0 transition-all"
+                        className="flex items-center gap-2 px-4 py-2 md:px-5 md:py-2.5 bg-indigo-700 text-seamist-50 rounded-xl font-bold hover:bg-indigo-800 hover:shadow-lg hover:-translate-y-0.5 active:translate-y-0 transition-all text-xs md:text-sm"
                     >
-                        <Plus className="w-5 h-5" /> Tambah Target
+                        <Plus className="w-4 h-4 md:w-5 md:h-5" /> Tambah Target
                     </button>
                 </div>
 
                 {isModalOpen && (
                     <div className="fixed inset-0 z-[100] flex items-center justify-center p-4">
                         <div className="absolute inset-0 bg-black/40 backdrop-blur-sm" onClick={() => setIsModalOpen(false)}></div>
-                        <div className="relative bg-white dark:bg-slate-800 rounded-3xl w-full max-w-md shadow-2xl p-6 md:p-8 animate-in zoom-in-95 duration-300">
-                            <button onClick={() => setIsModalOpen(false)} className="absolute top-4 right-4 p-2 text-gray-400 hover:text-gray-600 dark:hover:text-gray-300 hover:bg-gray-100 dark:hover:bg-slate-700 rounded-full transition-colors">
+                        <div className="relative bg-white dark:bg-[#16181c] rounded-3xl w-full max-w-md shadow-2xl p-6 md:p-8 animate-in zoom-in-95 duration-300 border dark:border-[#2f3336]">
+                            <button onClick={() => setIsModalOpen(false)} className="absolute top-4 right-4 p-2 text-gray-400 hover:text-gray-600 dark:hover:text-[#e7e9ea] hover:bg-gray-100 dark:hover:bg-[#15202b] rounded-full transition-colors">
                                 <X className="w-5 h-5" />
                             </button>
-                            <h3 className="text-2xl font-bold text-gray-800 dark:text-gray-100 mb-6">Target Baru</h3>
+                            <h3 className="text-xl md:text-2xl font-bold text-gray-800 dark:text-gray-100 mb-6">Target Baru</h3>
                             <form onSubmit={handleAddGoal} className="space-y-4">
                                 <div>
                                     <label className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">Nama Target</label>
@@ -181,7 +181,7 @@ export default function GoalsIndex() {
                                         value={newTitle}
                                         onChange={(e) => setNewTitle(e.target.value)}
                                         placeholder="Contoh: DP Mobil, Liburan..."
-                                        className="w-full bg-gray-50 dark:bg-slate-700 border-gray-200 dark:border-slate-600 rounded-xl focus:border-indigo-500 focus:ring-indigo-500 dark:text-gray-100 dark:placeholder:text-gray-500"
+                                        className="w-full bg-gray-50 dark:bg-[#15202b] border-gray-200 dark:border-[#2f3336] rounded-xl focus:border-indigo-500 focus:ring-indigo-500 dark:text-[#e7e9ea] dark:placeholder:text-[#71767b]"
                                         required
                                         autoFocus
                                     />
@@ -190,13 +190,13 @@ export default function GoalsIndex() {
                                 <div>
                                     <label className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">Nominal Target</label>
                                     <div className="relative">
-                                        <span className="absolute left-4 top-1/2 -translate-y-1/2 font-bold text-gray-400">Rp</span>
+                                        <span className="absolute left-4 top-1/2 -translate-y-1/2 font-bold text-gray-400 dark:text-[#71767b]">Rp</span>
                                         <input 
                                             type="text" 
                                             value={newTarget}
                                             onChange={(e) => setNewTarget(e.target.value)}
                                             placeholder="Contoh: 50jt atau 50000000"
-                                            className="w-full pl-12 bg-gray-50 dark:bg-slate-700 border-gray-200 dark:border-slate-600 rounded-xl focus:border-indigo-500 focus:ring-indigo-500 font-semibold dark:text-gray-100 dark:placeholder:text-gray-500"
+                                            className="w-full pl-12 bg-gray-50 dark:bg-[#15202b] border-gray-200 dark:border-[#2f3336] rounded-xl focus:border-indigo-500 focus:ring-indigo-500 font-semibold dark:text-[#e7e9ea] dark:placeholder:text-[#71767b] text-sm md:text-base"
                                             required
                                         />
                                     </div>
@@ -226,7 +226,7 @@ export default function GoalsIndex() {
                         return (
                             <div 
                                 key={goal.id} 
-                                className={`relative bg-white dark:bg-slate-800 p-6 rounded-3xl shadow-sm border hover:shadow-xl transition-all duration-300 group hover:-translate-y-1 animate-in fade-in slide-in-from-bottom-4 ${isComplete ? 'border-green-400 dark:border-green-600 bg-green-50/30 dark:bg-green-950/20' : 'border-seamist-200 dark:border-slate-700'}`}
+                                className={`relative bg-white dark:bg-[#16181c] p-4 md:p-6 rounded-3xl shadow-sm border hover:shadow-xl transition-all duration-300 group hover:-translate-y-1 animate-in fade-in slide-in-from-bottom-4 ${isComplete ? 'border-green-400 dark:border-green-600 bg-green-50/30 dark:bg-green-950/20' : 'border-seamist-200 dark:border-[#2f3336]'}`}
                                 style={{ animationDelay: `${index * 50}ms` }}
                             >
                                 <button 
@@ -236,21 +236,21 @@ export default function GoalsIndex() {
                                     <Trash2 className="w-4 h-4" />
                                 </button>
 
-                                <div className="flex items-center gap-4 mb-6 pr-8">
-                                    <div className={`p-4 rounded-2xl ${isComplete ? 'bg-green-100 dark:bg-green-950/30 text-green-600 dark:text-green-400' : goal.bg + ' ' + goal.color} group-hover:scale-110 transition-transform duration-300`}>
-                                        {isComplete ? <CheckCircle2 className="w-8 h-8" /> : <Icon className="w-8 h-8" />}
+                                <div className="flex items-center gap-3 md:gap-4 mb-4 md:mb-6 pr-8">
+                                    <div className={`p-3 md:p-4 rounded-xl md:rounded-2xl ${isComplete ? 'bg-green-100 dark:bg-green-950/30 text-green-600 dark:text-green-400' : goal.bg + ' ' + goal.color} group-hover:scale-110 transition-transform duration-300`}>
+                                        {isComplete ? <CheckCircle2 className="w-6 h-6 md:w-8 md:h-8" /> : <Icon className="w-6 h-6 md:w-8 md:h-8" />}
                                     </div>
                                     <div className="flex-1 min-w-0">
-                                        <h4 className="font-bold text-gray-800 dark:text-gray-100 text-lg mb-1 truncate" title={goal.title}>{goal.title}</h4>
-                                        <p className="text-xs text-gray-500 dark:text-gray-400 font-semibold uppercase tracking-wider mb-1">Terkumpul</p>
-                                        <p className="text-sm text-gray-800 dark:text-gray-200 font-semibold truncate">
+                                        <h4 className="font-bold text-gray-800 dark:text-gray-100 text-sm md:text-lg mb-0.5 md:mb-1 truncate" title={goal.title}>{goal.title}</h4>
+                                        <p className="text-[8px] md:text-xs text-gray-500 dark:text-gray-400 font-semibold uppercase tracking-wider mb-0.5 md:mb-1">Terkumpul</p>
+                                        <p className="text-xs md:text-sm text-gray-800 dark:text-gray-200 font-semibold truncate">
                                             Rp {goal.current.toLocaleString('id-ID')} <span className="text-gray-400 dark:text-gray-500 font-normal">/ Rp {goal.target.toLocaleString('id-ID')}</span>
                                         </p>
                                     </div>
                                 </div>
                                 
                                 <div className="flex items-center gap-3 mb-2">
-                                    <div className="w-full bg-seamist-100 dark:bg-slate-700 rounded-full h-4 overflow-hidden">
+                                    <div className="w-full bg-seamist-100 dark:bg-[#15202b] rounded-full h-4 overflow-hidden">
                                         <div 
                                             className={`${isComplete ? 'bg-green-500' : 'bg-indigo-600'} h-full rounded-full transition-all duration-1000 ease-out relative`} 
                                             style={{ width: `${percentage}%` }}
@@ -258,7 +258,7 @@ export default function GoalsIndex() {
                                             <div className="absolute inset-0 bg-white/20 w-full h-full animate-[shimmer_2s_infinite]"></div>
                                         </div>
                                     </div>
-                                    <div className={`font-semibold text-xl min-w-[3rem] text-right ${isComplete ? 'text-green-600 dark:text-green-400' : 'text-indigo-700 dark:text-indigo-400'}`}>{percentage}%</div>
+                                    <div className={`font-semibold text-base md:text-xl min-w-[2.5rem] md:min-w-[3rem] text-right ${isComplete ? 'text-green-600 dark:text-green-400' : 'text-indigo-700 dark:text-indigo-400'}`}>{percentage}%</div>
                                 </div>
 
                                 {!isComplete && (
@@ -280,13 +280,13 @@ export default function GoalsIndex() {
                     })}
                 </div>
 
-                <div className="mt-8 bg-gradient-to-r from-seamist-100 dark:from-slate-800 to-indigo-50 dark:to-slate-800 p-8 rounded-3xl border border-seamist-200 dark:border-slate-700 text-center max-w-3xl mx-auto shadow-inner transition-transform hover:scale-[1.02] duration-300">
-                    <div className="w-16 h-16 bg-white dark:bg-slate-700 rounded-full flex items-center justify-center mx-auto mb-4 shadow-sm">
-                        <Target className="w-8 h-8 text-indigo-600 dark:text-seamist-300" />
+                <div className="mt-8 bg-gradient-to-r from-seamist-100 dark:from-[#15202b] to-indigo-50 dark:to-[#15202b] p-5 md:p-8 rounded-3xl border border-seamist-200 dark:border-[#2f3336] text-center max-w-3xl mx-auto shadow-inner transition-transform hover:scale-[1.02] duration-300">
+                    <div className="w-12 h-12 md:w-16 md:h-16 bg-white dark:bg-[#16181c] rounded-full flex items-center justify-center mx-auto mb-4 shadow-sm border dark:border-[#2f3336]">
+                        <Target className="w-6 h-6 md:w-8 md:h-8 text-indigo-600 dark:text-[#e7e9ea]" />
                     </div>
-                    <h4 className="font-extrabold text-2xl text-indigo-800 dark:text-seamist-300 mb-3">Tetap Semangat!</h4>
-                    <p className="text-indigo-700/80 dark:text-gray-300 font-medium text-lg">
-                        Kamu bisa menambah saldo tabungan langsung dari halaman <span className="font-bold text-indigo-900 dark:text-seamist-300 bg-white/50 dark:bg-slate-700 px-2 py-1 rounded-md">Chat</span>. Pilih opsi "Menabung"!
+                    <h4 className="font-extrabold text-xl md:text-2xl text-indigo-800 dark:text-[#e7e9ea] mb-3">Tetap Semangat!</h4>
+                    <p className="text-indigo-700/80 dark:text-[#71767b] font-medium text-sm md:text-lg">
+                        Kamu bisa menambah saldo tabungan langsung dari halaman <span className="font-bold text-indigo-900 dark:text-[#e7e9ea] bg-white/50 dark:bg-[#15202b] px-2 py-1 rounded-md">Chat</span>. Pilih opsi "Menabung"!
                     </p>
                 </div>
             </div>

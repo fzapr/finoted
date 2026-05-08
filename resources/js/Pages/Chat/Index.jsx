@@ -72,6 +72,11 @@ export default function ChatIndex() {
     const [isListening, setIsListening] = useState(false);
 
     const toggleListening = () => {
+        if (!window.isSecureContext) {
+            alert('Voice input memerlukan koneksi HTTPS (Secure Context) untuk alasan keamanan browser.');
+            return;
+        }
+
         if (!('webkitSpeechRecognition' in window) && !('SpeechRecognition' in window)) {
             alert('Browser kamu tidak mendukung voice input.');
             return;
@@ -109,7 +114,7 @@ export default function ChatIndex() {
 
     return (
         <AppLayout
-            header={<div className="w-full flex items-center justify-between"><h2 className="text-xl font-bold leading-tight text-indigo-800 dark:text-seamist-300">Asisten Keuangan</h2></div>}
+            header={<div className="w-full flex items-center justify-between"><h2 className="text-lg md:text-xl font-bold leading-tight text-indigo-800 dark:text-[#e7e9ea]">Asisten Keuangan</h2></div>}
             noScroll={true}
         >
             <Head title="Chat" />
@@ -118,7 +123,7 @@ export default function ChatIndex() {
                 {/* Chat Interface (Full Width) */}
                 <div className="flex flex-col flex-1 relative min-h-0">
                     {/* Chat Messages */}
-                    <div className="flex-1 overflow-y-auto p-4 md:p-6 lg:px-12 space-y-6 scroll-smooth bg-gray-50/50 dark:bg-slate-900/50">
+                    <div className="flex-1 overflow-y-auto p-4 md:p-6 lg:px-12 space-y-6 scroll-smooth bg-gray-50/50 dark:bg-black">
                         {messages.map((msg) => (
                             <div key={msg.id} className={`flex w-full ${msg.sender === 'user' ? 'justify-end' : 'justify-start'} animate-in fade-in slide-in-from-bottom-2 duration-300`}>
                                 <div className={`flex gap-3 max-w-[90%] md:max-w-[75%] ${msg.sender === 'user' ? 'flex-row-reverse' : 'flex-row'}`}>
@@ -131,14 +136,14 @@ export default function ChatIndex() {
                                     
                                     {/* Message Bubble */}
                                     <div className="flex flex-col">
-                                        <div className={`px-5 py-3.5 ${
+                                        <div className={`px-3 md:px-5 py-2 md:py-3.5 text-sm md:text-base ${
                                             msg.sender === 'user' 
-                                                ? 'bg-gradient-to-tr from-indigo-700 to-indigo-600 text-white rounded-2xl rounded-tr-sm shadow-[0_4px_14px_0_rgba(52,61,138,0.39)]' 
-                                                : 'bg-white/90 dark:bg-slate-800/90 backdrop-blur-md text-gray-800 dark:text-gray-100 rounded-2xl rounded-tl-sm shadow-sm border border-gray-100 dark:border-slate-700 whitespace-pre-wrap leading-relaxed'
+                                                ? 'bg-gradient-to-tr from-indigo-700 to-indigo-600 text-white rounded-2xl rounded-tr-sm shadow-md' 
+                                                : 'bg-white/90 dark:bg-[#16181c] backdrop-blur-md text-gray-800 dark:text-[#e7e9ea] rounded-2xl rounded-tl-sm shadow-sm border border-gray-100 dark:border-[#2f3336] whitespace-pre-wrap leading-relaxed'
                                         }`}>
                                             {renderMessageText(msg.text)}
                                         </div>
-                                        <span className={`text-[10px] text-gray-400 mt-1.5 font-medium ${msg.sender === 'user' ? 'text-right mr-1' : 'ml-1'}`}>{msg.time}</span>
+                                        <span className={`text-[10px] text-gray-400 dark:text-[#71767b] mt-1.5 font-medium ${msg.sender === 'user' ? 'text-right mr-1' : 'ml-1'}`}>{msg.time}</span>
                                     </div>
                                 </div>
                             </div>
@@ -151,10 +156,10 @@ export default function ChatIndex() {
                                     <div className="w-8 h-8 rounded-full bg-gradient-to-br from-indigo-500 to-indigo-700 flex items-center justify-center shrink-0 shadow-sm mt-1">
                                         <Sparkles className="w-4 h-4 text-white animate-pulse" />
                                     </div>
-                                    <div className="bg-white/90 backdrop-blur-md border border-gray-100 shadow-sm rounded-2xl rounded-tl-sm px-5 py-4 flex items-center gap-1.5">
-                                        <span className="w-2 h-2 bg-indigo-300 rounded-full animate-bounce" style={{ animationDelay: '0ms' }}></span>
-                                        <span className="w-2 h-2 bg-indigo-300 rounded-full animate-bounce" style={{ animationDelay: '150ms' }}></span>
-                                        <span className="w-2 h-2 bg-indigo-300 rounded-full animate-bounce" style={{ animationDelay: '300ms' }}></span>
+                                    <div className="bg-white/90 dark:bg-[#16181c] backdrop-blur-md border border-gray-100 dark:border-[#2f3336] shadow-sm rounded-2xl rounded-tl-sm px-4 py-3 flex items-center gap-1.5">
+                                        <span className="w-2 h-2 bg-indigo-300 dark:bg-indigo-500 rounded-full animate-bounce" style={{ animationDelay: '0ms' }}></span>
+                                        <span className="w-2 h-2 bg-indigo-300 dark:bg-indigo-500 rounded-full animate-bounce" style={{ animationDelay: '150ms' }}></span>
+                                        <span className="w-2 h-2 bg-indigo-300 dark:bg-indigo-500 rounded-full animate-bounce" style={{ animationDelay: '300ms' }}></span>
                                     </div>
                                 </div>
                             </div>
@@ -164,26 +169,26 @@ export default function ChatIndex() {
                     </div>
 
                     {/* Input Area */}
-                    <div className="bg-white dark:bg-slate-800 border-t border-seamist-200 dark:border-slate-700 p-4 md:p-6 shrink-0 z-10 shadow-[0_-10px_30px_-15px_rgba(0,0,0,0.05)]">
+                    <div className="bg-white dark:bg-black border-t border-seamist-200 dark:border-[#2f3336] p-3 md:p-6 shrink-0 z-10 shadow-[0_-10px_30px_-15px_rgba(0,0,0,0.05)]">
                         {!activeMode && !pendingTransaction && (
                             <div className="flex gap-2 md:gap-4 max-w-2xl mx-auto mb-4 animate-in slide-in-from-bottom-4 duration-300">
                                 <button 
                                     onClick={() => handleModeSelect('expense')}
-                                    className="flex-1 flex items-center justify-center gap-2 py-3.5 px-4 bg-red-50 dark:bg-red-950/30 hover:bg-red-100 dark:hover:bg-red-950/50 border border-red-100 dark:border-red-900/30 text-red-700 dark:text-red-400 rounded-2xl font-semibold transition-all duration-200 hover:shadow-sm"
+                                    className="flex-1 flex items-center justify-center gap-2 py-2.5 md:py-3.5 px-3 bg-red-50 dark:bg-red-500/10 hover:bg-red-100 dark:hover:bg-red-500/20 border border-red-100 dark:border-red-500/20 text-red-700 dark:text-red-500 rounded-2xl text-xs md:text-sm font-bold transition-all duration-200 hover:shadow-sm"
                                 >
-                                    <ArrowDownCircle className="w-5 h-5" /> <span>Keluar</span>
+                                    <ArrowDownCircle className="w-4 h-4 md:w-5 md:h-5" /> <span>Keluar</span>
                                 </button>
                                 <button 
                                     onClick={() => handleModeSelect('income')}
-                                    className="flex-1 flex items-center justify-center gap-2 py-3.5 px-4 bg-green-50 dark:bg-green-950/30 hover:bg-green-100 dark:hover:bg-green-950/50 border border-green-100 dark:border-green-900/30 text-green-700 dark:text-green-400 rounded-2xl font-semibold transition-all duration-200 hover:shadow-sm"
+                                    className="flex-1 flex items-center justify-center gap-2 py-2.5 md:py-3.5 px-3 bg-green-50 dark:bg-green-500/10 hover:bg-green-100 dark:hover:bg-green-500/20 border border-green-100 dark:border-green-500/20 text-green-700 dark:text-green-500 rounded-2xl text-xs md:text-sm font-bold transition-all duration-200 hover:shadow-sm"
                                 >
-                                    <ArrowUpCircle className="w-5 h-5" /> <span>Masuk</span>
+                                    <ArrowUpCircle className="w-4 h-4 md:w-5 md:h-5" /> <span>Masuk</span>
                                 </button>
                                 <button 
                                     onClick={() => handleModeSelect('savings')}
-                                    className="flex-1 flex items-center justify-center gap-2 py-3.5 px-4 bg-blue-50 dark:bg-blue-950/30 hover:bg-blue-100 dark:hover:bg-blue-950/50 border border-blue-100 dark:border-blue-900/30 text-blue-700 dark:text-blue-400 rounded-2xl font-semibold transition-all duration-200 hover:shadow-sm"
+                                    className="flex-1 flex items-center justify-center gap-2 py-2.5 md:py-3.5 px-3 bg-blue-50 dark:bg-blue-500/10 hover:bg-blue-100 dark:hover:bg-blue-500/20 border border-blue-100 dark:border-blue-500/20 text-blue-700 dark:text-blue-500 rounded-2xl text-xs md:text-sm font-bold transition-all duration-200 hover:shadow-sm"
                                 >
-                                    <Target className="w-5 h-5" /> <span>Nabung</span>
+                                    <Target className="w-4 h-4 md:w-5 md:h-5" /> <span>Nabung</span>
                                 </button>
                             </div>
                         )}
@@ -191,8 +196,8 @@ export default function ChatIndex() {
                         {activeMode && !activeCategory && (
                             <div className="max-w-2xl mx-auto animate-in fade-in zoom-in-95 duration-300 mb-4">
                                 <div className="flex items-center justify-between mb-3 px-2">
-                                    <span className="text-xs font-bold text-gray-400 uppercase tracking-widest">Pilih Kategori</span>
-                                    <button onClick={cancelTransaction} className="text-xs font-semibold text-indigo-600 hover:bg-indigo-50 px-3 py-1.5 rounded-full transition-colors">
+                                    <span className="text-[10px] font-bold text-gray-400 dark:text-[#71767b] uppercase tracking-widest">Pilih Kategori</span>
+                                    <button onClick={cancelTransaction} className="text-[10px] font-bold text-indigo-600 dark:text-indigo-400 hover:bg-indigo-50 dark:hover:bg-[#1d9bf0]/10 px-3 py-1.5 rounded-full transition-colors">
                                         BATAL
                                     </button>
                                 </div>
@@ -203,10 +208,10 @@ export default function ChatIndex() {
                                             onClick={() => handleCategorySelect(cat)}
                                             className="group flex flex-col items-center gap-1.5"
                                         >
-                                            <div className={`w-full aspect-square flex items-center justify-center rounded-2xl border bg-white ${cat.color} group-hover:shadow-md group-hover:-translate-y-1 transition-all duration-300`}>
+                                            <div className={`w-full aspect-square flex items-center justify-center rounded-2xl border bg-white dark:bg-[#16181c] dark:border-[#2f3336] ${cat.color} group-hover:shadow-md group-hover:-translate-y-1 transition-all duration-300`}>
                                                 <cat.icon className="w-6 h-6 md:w-8 md:h-8" />
                                             </div>
-                                            <span className="text-[10px] md:text-xs text-gray-500 font-semibold uppercase tracking-tight">{cat.label}</span>
+                                            <span className="text-[10px] md:text-xs text-gray-500 dark:text-[#71767b] font-semibold uppercase tracking-tight">{cat.label}</span>
                                         </button>
                                     ))}
                                 </div>
@@ -238,7 +243,7 @@ export default function ChatIndex() {
                                     </button>
                                     <button 
                                         onClick={() => confirmTransaction(false)}
-                                        className="flex-1 py-4 bg-white dark:bg-slate-700 hover:bg-gray-50 dark:hover:bg-slate-600 text-gray-500 dark:text-gray-400 font-bold rounded-2xl border border-gray-200 dark:border-slate-600 transition-all"
+                                        className="flex-1 py-4 bg-white dark:bg-[#16181c] hover:bg-gray-50 dark:hover:bg-[#1d9bf0]/5 text-gray-500 dark:text-[#71767b] font-bold rounded-2xl border border-gray-200 dark:border-[#2f3336] transition-all"
                                     >
                                         Batal
                                     </button>
@@ -255,7 +260,7 @@ export default function ChatIndex() {
                                             <button 
                                                 key={index}
                                                 onClick={() => setInputValue(chip)}
-                                                className="whitespace-nowrap px-4 py-1.5 bg-white dark:bg-slate-700 border border-seamist-200 dark:border-slate-600 text-seamist-700 dark:text-seamist-300 text-xs font-semibold rounded-full hover:bg-seamist-50 dark:hover:bg-slate-600 hover:border-seamist-300 transition-colors shadow-sm"
+                                                className="whitespace-nowrap px-3 py-1.5 bg-white dark:bg-[#16181c] border border-seamist-200 dark:border-[#2f3336] text-seamist-700 dark:text-[#e7e9ea] text-[11px] md:text-xs font-semibold rounded-full hover:bg-seamist-50 dark:hover:bg-[#1d9bf0]/10 hover:border-seamist-300 transition-colors shadow-sm"
                                             >
                                                 {chip}
                                             </button>
@@ -267,22 +272,21 @@ export default function ChatIndex() {
                                     <button 
                                         type="button"
                                         onClick={cancelTransaction}
-                                        className="p-3 text-gray-400 hover:text-indigo-600 hover:bg-indigo-50 rounded-2xl transition-colors shrink-0"
+                                        className="p-3 text-gray-400 dark:text-[#71767b] hover:text-indigo-600 hover:bg-indigo-50 dark:hover:bg-[#1d9bf0]/10 rounded-2xl transition-colors shrink-0"
                                     >
                                         <X className="w-6 h-6" />
                                     </button>
                                 )}
                                 <div className="relative flex-1 group">
-                                    <div className="absolute left-5 top-1/2 -translate-y-1/2 flex items-center gap-2 pointer-events-none">
-                                        <span className="font-bold text-indigo-800/40 group-focus-within:text-indigo-800 transition-colors">Rp</span>
+                                    <div className="absolute left-4 md:left-5 top-1/2 -translate-y-1/2 flex items-center gap-2 pointer-events-none">
+                                        <span className="font-bold text-indigo-800/40 dark:text-[#71767b] group-focus-within:text-indigo-800 dark:group-focus-within:text-[#1d9bf0] transition-colors text-sm md:text-lg">Rp</span>
                                     </div>
                                     <input 
                                         type="text" 
                                         value={inputValue}
                                         onChange={(e) => setInputValue(e.target.value)}
                                         placeholder={activeCategory ? "Nominal..." : "Ketik 'Makan padang 50rb'..."}
-                                        className="w-full pl-14 pr-12 py-4 bg-white dark:bg-slate-700 border-2 border-indigo-100/50 dark:border-slate-600 rounded-[1.25rem] focus:outline-none focus:ring-4 focus:ring-indigo-50 dark:focus:ring-indigo-950/50 focus:border-indigo-600 text-lg font-bold text-gray-800 dark:text-gray-100 transition-all shadow-sm group-hover:border-indigo-200 dark:group-hover:border-slate-500 placeholder:text-gray-400 dark:placeholder:text-gray-500"
-                                        autoFocus
+                                        className="w-full pl-11 md:pl-14 pr-10 md:pr-12 py-3 md:py-4 bg-white dark:bg-[#16181c] border-2 border-indigo-100/50 dark:border-[#2f3336] rounded-xl md:rounded-[1.25rem] focus:outline-none focus:ring-4 focus:ring-indigo-50 dark:focus:ring-[#1d9bf0]/10 focus:border-indigo-600 dark:focus:border-[#1d9bf0] text-sm md:text-lg font-bold text-gray-800 dark:text-[#e7e9ea] transition-all shadow-sm group-hover:border-indigo-200 dark:group-hover:border-[#38444d] placeholder:text-gray-400 dark:placeholder:text-[#71767b]"
                                         disabled={isTyping}
                                     />
                                     <button 
@@ -296,9 +300,9 @@ export default function ChatIndex() {
                                 <button 
                                     type="submit"
                                     disabled={!inputValue.trim() || isTyping}
-                                    className="p-4 bg-indigo-200 hover:bg-indigo-300 text-white rounded-[1.25rem] disabled:opacity-30 disabled:cursor-not-allowed transition-all shadow-sm"
+                                    className="p-3 md:p-4 bg-indigo-200 hover:bg-indigo-300 text-white rounded-xl md:rounded-[1.25rem] disabled:opacity-30 disabled:cursor-not-allowed transition-all shadow-sm"
                                 >
-                                    <Send className="w-7 h-7" />
+                                    <Send className="w-5 h-5 md:w-7 md:h-7" />
                                 </button>
                                 </form>
                             </div>

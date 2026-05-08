@@ -22,7 +22,7 @@ export default function Edit({ mustVerifyEmail, status }) {
     return (
         <AppLayout
             header={
-                <h2 className="text-xl font-bold leading-tight text-indigo-800 dark:text-seamist-300">
+                <h2 className="text-lg md:text-xl font-bold leading-tight text-indigo-800 dark:text-[#e7e9ea]">
                     Pengaturan Profil
                 </h2>
             }
@@ -33,21 +33,21 @@ export default function Edit({ mustVerifyEmail, status }) {
                 <div className="mx-auto max-w-7xl space-y-6 sm:px-6 lg:px-8">
                     
                     {/* FINCHAT SPECIFIC SETTINGS */}
-                    <div className="bg-white dark:bg-slate-800 p-6 shadow-sm sm:rounded-3xl border border-seamist-200 dark:border-slate-700">
+                    <div className="bg-white dark:bg-[#16181c] p-6 shadow-sm sm:rounded-3xl border border-seamist-200 dark:border-[#2f3336]">
                         <header className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
                             <div>
-                                <h2 className="text-lg font-bold text-gray-900 dark:text-gray-100 flex items-center gap-2">
-                                    <Wallet className="w-5 h-5 text-indigo-600 dark:text-seamist-300" /> Pengaturan Finoted
+                                <h2 className="text-lg font-bold text-gray-900 dark:text-[#e7e9ea] flex items-center gap-2">
+                                    <Wallet className="w-5 h-5 text-indigo-600 dark:text-[#e7e9ea]" /> Pengaturan Finoted
                                 </h2>
-                                <p className="mt-1 text-sm text-gray-600 dark:text-gray-400">
+                                <p className="mt-1 text-sm text-gray-600 dark:text-[#71767b]">
                                     Atur batas maksimal pengeluaran harianmu. Finoted akan memperingatkanmu jika pengeluaran hari ini melebihi batas yang ditentukan.
                                 </p>
                             </div>
                             <div className="flex items-center gap-3">
-                                <span className="text-sm font-bold text-gray-700 dark:text-gray-300">{isLimitEnabled ? 'Aktif' : 'Nonaktif'}</span>
+                                <span className="text-sm font-bold text-gray-700 dark:text-[#71767b]">{isLimitEnabled ? 'Aktif' : 'Nonaktif'}</span>
                                 <button 
                                     onClick={() => setIsLimitEnabled(!isLimitEnabled)}
-                                    className={`relative inline-flex h-7 w-12 items-center rounded-full transition-colors ${isLimitEnabled ? 'bg-indigo-600' : 'bg-gray-300 dark:bg-slate-600'}`}
+                                    className={`relative inline-flex h-7 w-12 items-center rounded-full transition-colors ${isLimitEnabled ? 'bg-indigo-600' : 'bg-gray-300 dark:bg-[#15202b]'}`}
                                 >
                                     <span className={`inline-block h-5 w-5 transform rounded-full bg-white transition-transform ${isLimitEnabled ? 'translate-x-6' : 'translate-x-1'}`} />
                                 </button>
@@ -62,7 +62,7 @@ export default function Edit({ mustVerifyEmail, status }) {
                                         type="number"
                                         value={localLimit}
                                         onChange={(e) => setLocalLimit(e.target.value)}
-                                        className="w-full pl-12 pr-4 py-3 bg-gray-50 dark:bg-slate-700 border-gray-200 dark:border-slate-600 rounded-xl focus:border-indigo-500 focus:ring-indigo-500 font-bold dark:text-gray-100 dark:placeholder:text-gray-500"
+                                        className="w-full pl-12 pr-4 py-3 bg-gray-50 dark:bg-[#15202b] border-gray-200 dark:border-[#2f3336] rounded-xl focus:border-indigo-500 focus:ring-indigo-500 font-bold dark:text-[#e7e9ea] dark:placeholder:text-[#71767b]"
                                         placeholder="Contoh: 100000"
                                     />
                                 </div>
@@ -82,7 +82,7 @@ export default function Edit({ mustVerifyEmail, status }) {
                     </div>
 
                     {/* DEFAULT BREEZE SETTINGS */}
-                    <div className="bg-white dark:bg-slate-800 p-6 shadow-sm sm:rounded-3xl border border-seamist-200 dark:border-slate-700">
+                    <div className="bg-white dark:bg-[#16181c] p-6 shadow-sm sm:rounded-3xl border border-seamist-200 dark:border-[#2f3336]">
                         <UpdateProfileInformationForm
                             mustVerifyEmail={mustVerifyEmail}
                             status={status}
@@ -90,11 +90,11 @@ export default function Edit({ mustVerifyEmail, status }) {
                         />
                     </div>
 
-                    <div className="bg-white dark:bg-slate-800 p-6 shadow-sm sm:rounded-3xl border border-seamist-200 dark:border-slate-700">
+                    <div className="bg-white dark:bg-[#16181c] p-6 shadow-sm sm:rounded-3xl border border-seamist-200 dark:border-[#2f3336]">
                         <UpdatePasswordForm className="max-w-xl" />
                     </div>
 
-                    <div className="bg-white dark:bg-slate-800 p-6 shadow-sm sm:rounded-3xl border border-seamist-200 dark:border-slate-700 border-red-100 dark:border-red-900/30">
+                    <div className="bg-white dark:bg-[#16181c] p-6 shadow-sm sm:rounded-3xl border border-seamist-200 dark:border-[#2f3336] border-red-100 dark:border-red-900/30">
                         <DeleteUserForm className="max-w-xl" />
                     </div>
                 </div>
